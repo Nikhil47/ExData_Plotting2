@@ -58,8 +58,8 @@ print(vehicularEm)
 From this graph, it can be seen that the heavy duty diesel and light duty gasoline vehicles are the main contributors. Hence, observing these two categories closely.
 
 ```R
-plot.data <- merged.data[(fips == "24510" | fips == "06037") & (EI.Sector == "Mobile - On-Road Gasoline Light Duty Vehicles" |                                  EI.Sector == "Mobile - On-Road Diesel Heavy Duty Vehicles"), .(EI.Sector, sum(Emissions)),
-                                by = .(fips, year, EI.Sector)]
+plot.data <- merged.data[(fips == "24510" | fips == "06037") & (EI.Sector == "Mobile - On-Road Gasoline Light Duty Vehicles" | EI.Sector == "Mobile - On-Road Diesel Heavy Duty Vehicles"), .(EI.Sector, sum(Emissions)), by = .(fips, year, EI.Sector)]
+
 png(filename = "typeEm.png")
 typeEm <- ggplot(plot.data, aes(year, V2, fill = fips)) + facet_grid(~EI.Sector) + geom_bar(position = "dodge", stat = "identity")
 print(typeEm)
