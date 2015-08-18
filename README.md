@@ -34,7 +34,9 @@ Result: The emissions from motor vehicles show a decreasing trend in the Baltimo
 
 ![Plot 6](https://github.com/Nikhil47/ExData_Plotting2/blob/master/plot6.png)
 
-Result: From the plot, in absolute terms it can be seen that LA, California has witnessed the most change.
+Result: From the plot, in absolute terms it can be seen that LA, California has witnessed the most change. 
+
+The interesting part is that for LA the emissions had been increasing continuously only to come down drastically near 2008. But for Baltimore the trend has always been decreasing.
 
 However, let us see what kind of vehicular traffic contributes to the pollution the most. For that the vehicular data was pulled for both LA and Baltimore and grouped according to 'fips', 'year' and 'EI.Sector'. And a pie chart was plotted using ggplot to see the results.
 
@@ -53,4 +55,16 @@ print(vehicularEm)
 ```
 ![Vehicular Emissions by type](https://github.com/Nikhil47/ExData_Plotting2/blob/master/VehicularEm.png)
 
-From this graph, I had only wanted to see which kind of traffic mostly contributes to the PM2.5 levels. And found out that the heavy duty diesel and light duty gasoline vehicles are the main contributors. I would therefore, give my attention to these both vehicle types. LA, California is significantly larger than Baltimore, Maryland, 1302/239 = 5.44 times larger area wise. And 3,884,000/622,104 = 6.24 times, population wise. 
+From this graph, it can be seen that the heavy duty diesel and light duty gasoline vehicles are the main contributors. Hence, observing these two categories closely.
+
+```R
+plot.data <- merged.data[(fips == "24510" | fips == "06037") & (EI.Sector == "Mobile - On-Road Gasoline Light Duty Vehicles" |                                  EI.Sector == "Mobile - On-Road Diesel Heavy Duty Vehicles"), .(EI.Sector, sum(Emissions)),
+                                by = .(fips, year, EI.Sector)]
+png(filename = "typeEm.png")
+typeEm <- ggplot(plot.data, aes(year, V2, fill = fips)) + facet_grid(~EI.Sector) + geom_bar(position = "dodge", stat = "identity")
+print(typeEm)
+dev.off()
+```
+![Specific Vehicular Emissions]()
+
+From this graph, it can be seen that Baltimore shows a steady decline in the emission quantities under both the categories. Whereas, LA shows a haphazard growth rate in gasoline operated vehicles. But, it can be ascertained that LA has the most amount of change.
