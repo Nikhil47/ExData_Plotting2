@@ -65,6 +65,6 @@ typeEm <- ggplot(plot.data, aes(year, V2, fill = fips)) + facet_grid(~EI.Sector)
 print(typeEm)
 dev.off()
 ```
-![Specific Vehicular Emissions]()
+![Specific Vehicular Emissions](https://github.com/Nikhil47/ExData_Plotting2/blob/master/typeEm.png)
 
 From this graph, it can be seen that Baltimore shows a steady decline in the emission quantities under both the categories. Whereas, LA shows a haphazard growth rate in gasoline operated vehicles. But, it can be ascertained that LA has the most amount of change.
