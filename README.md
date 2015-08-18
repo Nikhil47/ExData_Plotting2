@@ -51,4 +51,6 @@ VehicularEm <- ggplot(vehicular.data, aes(year, V1, fill = fips)) +
     
 print(vehicularEm)
 ```
+![Vehicular Emissions by type](https://github.com/Nikhil47/ExData_Plotting2/blob/master/VehicularEm.png)
 
+From this graph, I had only wanted to see which kind of traffic mostly contributes to the PM2.5 levels. And found out that the heavy duty diesel and light duty gasoline vehicles are the main contributors. I would therefore, give my attention to these both vehicle types. LA, California is significantly larger than Baltimore, Maryland, 1302/239 = 5.44 times larger area wise. And 3,884,000/622,104 = 6.24 times, population wise. 
